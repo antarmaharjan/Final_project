@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <!--header css declarations-->
+    <th:block th:replace="base :: W7CHead"/>
+    <title>Resume Generator</title>
+
+</head>
+<body class="bg">
+
+<!--Navigation bar-->
+<div th:replace="base :: W7CNav"></div>
+
+
+<!--input-->
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col col-sm-6 form-group">
+            <h1>Roboresume</h1>
+            <h3>List of the people who've been entered.</h3>
+            <table content="center" border="1">
+                <thead>
+                <td>Name</td>
+                <td>Generate Resume</td>
+                <td>Actions</td>
+                </thead>
+                <tr th:each="person : ${allPeople}">
+                    <td th:text="${person.personFirstName} + ' ' + ${person.personLastName}"></td>
+                    <td><a th:href="@{/generateresume/{personId}(personId=${person.personId})}">See resume</a></td>
+                    <td>
+                        <a th:href="@{/editperson/{personId}(personId=${person.personId})}">Edit person</a> |
+                        <a th:href="@{/deleteperson/{personId}(personId=${person.personId})}">Delete person</a>
+                    </td>
+                    <!--<th:block th:with="id=${42774564}">-->
+                    <!--<a th:href="@{https://stackoverflow.com/questions/{id}(id=${id})}">Stack Overflow</a>-->
+                    <!--</th:block>-->
+                </tr>
+            </table>
+        </div>
+    </div>
+</div>
+<th:block th:replace="base :: W7CJS"></th:block>
+
+
+</body>
+</html>

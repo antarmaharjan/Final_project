@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <!--header css declarations-->
+    <th:block th:replace="base :: W7CHead"/>
+    <title>Resume Generator</title>
+
+</head>
+<body class="bg">
+<!--Navigation bar-->
+<div th:replace="base :: W7CNav"></div>
+
+
+<!--input-->
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col col-sm-10 form-group">
+            <div class="col col-sm-12 form-group">
+                <h1>New skill information for <span th:text="${currentPerson.personFirstName}+' '+${currentPerson.personLastName}"/></h1>
+            </div>
+            <form action="#" th:action="@{/addskill2}" th:object="${newSkill}" method="post">
+                <div class="row justify-content-center">
+                    <div class="col col-sm-6 form-group">
+                        <input type="hidden" th:field="*{skillId}"/>
+                        <input type="hidden" th:field="${currentPerson.personId}"/>
+                        <label for="skill">Skill</label>
+                        <input type="text" class="form-control" th:field="*{skillName}" id="skill"
+                               placeholder="Juggling" autofocus="autofocus"/>
+                        <span th:if="${#fields.hasErrors('skillName')}" th:errors="*{skillName}"/>
+
+                    </div>
+                    <div class="col col-sm-6 form-group">
+                        <label for="level">Skill level</label>
+                        <input type="text" class="form-control" th:field="*{skillLevel}" id="level"
+                               placeholder="Mastery!"/>
+                        <span th:if="${#fields.hasErrors('skillLevel')}" th:errors="*{skillLevel}"/>
+                    </div>
+                </div>
+                <div class="row justify-content-center">
+                    <div class="col col-sm-12">
+                        <button type="submit" class="btn btn-primary">Submit</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<th:block th:replace="base :: W7CJS"></th:block>
+
+</body>
+</html>

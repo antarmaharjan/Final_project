@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <!--header css declarations-->
+    <th:block th:replace="base :: W7CHead"/>
+    <title>Resume Generator</title>
+
+</head>
+<body class="bg">
+<!--Navigation bar-->
+<div th:replace="base :: W7CNav"></div>
+
+
+<!--input-->
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col col-sm-10 form-group">
+            <h1>Education information for <span th:text="${currentPerson.personFirstName}+' '+${currentPerson.personLastName}"/></h1>
+            <form action="#" th:action="@{/addeducation2}" th:object="${newEducation}" method="post">
+                <div class="row justify-content-center">
+                    <div class="col col-sm-6 form-group">
+                        <input type="hidden" th:field="*{educationId}"/>
+                        <input type="hidden" th:field="${currentPerson.personId}"/>
+
+                        <label for="school">School</label>
+                        <input   type="text" class="form-control" th:field="*{educationSchoolName}" id="school"
+                               placeholder="College" autofocus="autofocus"/>
+                        <!--<span th:if="${#fields.hasErrors('schoolName')}" th:errors="*{schoolName}"/>-->
+
+                    </div>
+                    <div class="col col-sm-6 form-group">
+                        <label for="degree">Degree</label>
+                        <input  type="text" class="form-control" th:field="*{educationDegree}" id="degree"
+                               placeholder="Degree"/>
+                        <!--<span th:if="${#fields.hasErrors('degree')}" th:errors="*{degree}"/>-->
+                    </div>
+                </div>
+                <div class="row justify-content-center">
+                    <div class="col col-sm-12 form-group">
+                        <label for="year">Graduation Year</label>
+                        <input   type="number" class="form-control" th:field="*{educationGradYear}" id="year"
+                               placeholder="year"/>
+                        <!--<span th:if="${#fields.hasErrors('gradYear')}" th:errors="*{gradYear}"/>-->
+                    </div>
+                </div>
+                <div class="row justify-content-center">
+                    <div class="col col-sm-12">
+                        <button type="submit" class="btn btn-primary">Submit</button>
+                        <!--<p><a type="button" class="btn btn-outline-primary" th:href="@{/addexp}">Add work experience for someone</a></p>-->
+
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<th:block th:replace="base :: W7CJS"></th:block>
+
+</body>
+</html>

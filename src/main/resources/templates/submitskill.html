@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <!--header css declarations-->
+    <th:block th:replace="base :: W7CHead"/>
+    <title>Resume Generator</title>
+</head>
+<body class="bg">
+<!--Navigation bar-->
+<div th:replace="base :: W7CNav"></div>
+
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col col-sm-8">
+            <table class="table">
+                <thead>
+                <tr>
+                    <th>Skill</th>
+                    <th>Level</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    <td th:text="${currentSkill.skillName}"></td>
+                    <td th:text="${currentSkill.skillLevel}"></td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <div class="row justify-content-center">
+        <a class="btn btn-primary" th:href="@{/addskill/{id}(id=${currentPerson.personId})}" role="button">Add another skill</a>
+        <a class="btn btn-primary" th:href="@{/addexp/{id}(id=${currentPerson.personId})}" role="button">Add an experience</a>
+        <a class="btn btn-primary" th:href="@{/addeducation/{id}(id=${currentPerson.personId})}" role="button">Add a school</a>
+
+    </div>
+</div>
+
+<th:block th:replace="base :: W7CJS"></th:block>
+
+</body>
+</html>
