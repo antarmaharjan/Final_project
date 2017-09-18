@@ -41,8 +41,8 @@ public class MainController
     RoleSecRepository roleRepo;
 
 
-
-    @RequestMapping({"/home","/"})
+    @RequestMapping({"/","/home"})
+    //@RequestMapping({"/home","/"})
     public String welcomePage(Model model, Principal principal)
     {
         setup();

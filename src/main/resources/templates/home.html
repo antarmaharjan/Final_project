@@ -47,16 +47,16 @@
     </div>
     <div sec:authorize="hasAuthority('JOBSEEKER')" class="row justify-content-center">
         <div class="col-6 text-center">
-            <h3>What would you like to do?</h3>
-            <div th:if="${currentuser}!=null">
-            <p><a type="button" class="btn btn-info"
-                  th:href="@{/addeducation/{personid}(personid=${currentuser.personId})}">Add education</a></p>
-            <p><a type="button" class="btn btn-info"
-                  th:href="@{/addexp/{personid}(personid=${currentuser.personId})}">Add work experience</a></p>
-            <p><a type="button" class="btn btn-info"
-                  th:href="@{/addskill/{personid}(personid=${currentuser.personId})}">Add a skill</a></p>
-            <p><a type="button" class="btn btn-warning"
-                  th:href="@{/generateresume/{personid}(personid=${currentuser.personId})}">Generate my resume</a></p>
+                <h3>What would you like to do?</h3>
+                <div th:if="${currentuser}!=null">
+                    <p><a type="button" class="btn btn-info"
+                          th:href="@{/addeducation/{personid}(personid=${currentuser.personId})}">Add education</a></p>
+                    <p><a type="button" class="btn btn-info"
+                          th:href="@{/addexp/{personid}(personid=${currentuser.personId})}">Add work experience</a></p>
+                    <p><a type="button" class="btn btn-info"
+                          th:href="@{/addskill/{personid}(personid=${currentuser.personId})}">Add a skill</a></p>
+                    <p><a type="button" class="btn btn-warning"
+                          th:href="@{/generateresume/{personid}(personid=${currentuser.personId})}">Generate my resume</a></p>
                 </div>
         </div>
     </div>
