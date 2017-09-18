@@ -3,6 +3,7 @@ package com.ratna.roboresume.controller;
 import com.ratna.roboresume.models.*;
 import com.ratna.roboresume.repositories.*;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.userdetails.User;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -358,11 +359,6 @@ public class MainController
         model.addAttribute("Jobs", jobRepo.findAll());
         return "showJobs";
     }
-    /*********************************************
-     *
-     * Setup
-     *
-     *********************************************/
     public void setup()
     {
         if(roleRepo.count()==0)
@@ -388,9 +384,9 @@ public class MainController
     @GetMapping("/addseeker")
     public String addJobseeker()
     {
-        if(personUserRepository.findByUsername("jane")==null)
+        if(personUserRepository.findByUsername("username")==null)
         {
-            PersonUser jobSeeker = new PersonUser("Jane", "Doe", "jane@doe.com", "jane", "password", true);
+            PersonUser jobSeeker = new PersonUser("FirstName", "LastName", "Email", "username", "password", true);
             jobSeeker.addSecRole(roleRepo.findBySecRoleName("JOBSEEKER"));
             personUserRepository.save(jobSeeker);
         }
@@ -399,15 +395,24 @@ public class MainController
     @GetMapping("/addrecruiter")
     public String addRecruiter()
     {
-        if(personUserRepository.findByUsername("john")==null)
+        if(personUserRepository.findByUsername("username")==null)
         {
-            PersonUser recruiter = new PersonUser("John", "Doe", "john@doe.com", "john", "password", true);
+            PersonUser recruiter = new PersonUser("FirstName", "LastName", "Email", "username", "password", true);
             recruiter.addSecRole(roleRepo.findBySecRoleName("RECRUITER"));
             personUserRepository.save(recruiter);
         }
         return "redirect:/";
     }
+//------------------------------------------------------------------
+    @RequestMapping("/deleteperson/{id}")
+    public String delPerson(@PathVariable("id") long id) {
+        personUserRepository.delete(id);
+        return "home";
+    }
 }
+
+
+
 
 
 

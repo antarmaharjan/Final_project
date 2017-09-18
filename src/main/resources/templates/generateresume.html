@@ -1,31 +1,41 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
+    <meta charset="UTF-8"/>
+    <link rel="stylesheet" href="../css/style.css"/>
+    <meta name="viewport" content="width=device-width"/>
     <!--header css declarations-->
-    <th:block th:replace="base :: W7CHead"/>
-    <title>Resume Generator</title>
+    <!--<th:block th:replace="base :: W7CHead"/>-->
+    <title>Resume Building App</title>
+    <style type="text/css">
+        a{
+            color: gold;
+        }
+    </style>
 
 </head>
 <body class="bg">
+<header th:replace="fragment::headerpart"/>
 
 <!--Navigation bar-->
-<div th:replace="base :: W7CNav"></div>
+<!--<div th:replace="base :: W7CNav"></div>-->
 
 
-<!--input-->
+<section id="showcase"> <!--input-->
 <div class="container">
     <div class="row justify-content-center">
         <div class="col col-sm-6 form-group">
-            <h1>Roboresume</h1>
-            <h3>Here's <span th:text="${person.personFirstName} + ' ' + ${person.personLastName}"></span>'s Resume</h3>
-            <br />
+            <h3>Resume Building App prresents</h3>
+            <!--<h3>Here's <span th:text="${person.personFirstName} + ' ' + ${person.personLastName}"></span>'s Resume</h3>-->
+            <hr />
             <div class="resumehead">
-                <p><h3 th:text="${person.personFirstName} + ' ' + ${person.personLastName}"/></p>
-                <p><h4 th:text="${person.personEmail}"/></p>
+                <p>Name:<h3 th:text="${person.personFirstName} + ' ' + ${person.personLastName}"/>
+                Email:<h4 th:text="${person.personEmail}"/></p>
             </div>
             <hr />
             <div class="resumesubjecthead">
                 Education
+                <hr />
             </div>
             <div  th:each="edu : ${person.educationSet}">
                 <p th:text="${edu.educationSchoolName}"></p>
@@ -33,6 +43,7 @@
             </div>
             <div class="resumesubjecthead">
                 Experience
+                <hr />
             </div>
             <div th:each="exp : ${person.experienceSet}">
                 <p th:text="${exp.expCompany}+', '+${exp.expTitle}"></p>
@@ -44,15 +55,24 @@
             </div>
             <div class="resumesubjecthead">
                 Skills
+                <hr />
             </div>
             <div th:each="ski : ${person.skillSet}">
                 <p th:text="${ski.skillName}+', '+${ski.skillLevel}"/>
             </div>
+            <a class="btn btn-primary"  th:href="@{/home}">Go back to Home</a>
+            <!--<a th:href="@{/edit1/{personId}(personId=${person.personId})}">Edit this page</a>-->
         </div>
     </div>
 </div>
-<th:block th:replace="base :: W7CJS"></th:block>
+<!--<a class="btn btn-primary"  th:href="@{/home}">Go back to Home</a> Or-->
+<!--<a th:href="@{/edit1/{personId}(personId=${person.personId})}">Edit this page</a>-->
 
+
+
+<!--<th:block th:replace="base :: W7CJS"></th:block>-->
+</section>
+<footer th:replace="fragment::footerpart"/>
 
 </body>
 </html>

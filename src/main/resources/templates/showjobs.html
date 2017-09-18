@@ -1,28 +1,30 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
-    <!--header css declarations-->
-    <th:block th:replace="base :: W7CHead"/>
-    <title>Resume Generator</title>
-
+    <meta charset="UTF-8"/>
+    <link rel="stylesheet" href="../css/style.css"/>
+    <meta name="viewport" content="width=device-width"/>
+    <style type="text/css">
+        a{
+            color: gold;
+        }
+    </style>
+    <title>Resume Building App</title>
 </head>
-<body class="bg">
-
-<!--Navigation bar-->
-<div th:replace="base :: W7CNav"></div>
-
-
+<body>
+<header th:replace="fragment::headerpart"/>
 <!--input-->
-<div class="container">
+<section id="showcase">
+<div class="container" align="center">
     <div class="row justify-content-center">
         <div class="col col-sm-6 form-group">
-            <h1>Roboresume</h1>
-            <h3>Here are the posted jobs</h3>
+            <h2>Resume Building App!</h2>
+            <h3>Posted jobs are:</h3>
             <table content="center" border="1">
                 <thead>
                 <tr>
                     <th>Title</th>
-                    <th>Employer/Company</th>
+                    <th>Employer</th>
                     <th>Salary Range</th>
                     <th>More</th>
                 </tr>
@@ -41,8 +43,8 @@
         </div>
     </div>
 </div>
-<th:block th:replace="base :: W7CJS"></th:block>
-
+</section>
+<footer th:replace="fragment::footerpart"/>
 
 </body>
 </html>

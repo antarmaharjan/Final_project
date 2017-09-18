@@ -1,57 +1,57 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="www.thymeleaf.org ">
-<head>
-    <meta charset="utf-8"/>
-    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
-    <meta name="viewport" content="width=device-width, initial-scale=1"/>
-    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
-    <title>Signup</title>
 
-    <th:block th:replace="base :: W7CHead"></th:block>
+<head>
+
+    <meta charset="UTF-8"/>
+    <link rel="stylesheet" href="../css/style.css"/>
+    <meta name="viewport" content="width=device-width"/>
+    <title>Signup</title>
 </head>
 <body>
-<th:block th:replace="base :: W7CNav"></th:block>
+<header th:replace="fragment::headerpart"/>
 
-<div class="container">
-    <div class="row justify-content-center">
-        <div class="col col-sm-10">
+<section id="showcase">
+    <div class="container"></div>
+
             <h2>Sign up for the first time user!</h2>
             <form action="#" th:action="@{/signup}" th:object="${newuser}" method="post">
                 <div class="row justify-content-center">
-                    <div class="col col-sm-6 form-group">
+
+                    <!--<div class="col col-sm-6 form-group">-->
                         <input type="hidden" th:field="*{personId}"/>
                         <label for="fname">First Name: </label>
                         <input type="text" class="form-control" th:field="*{personFirstName}" id="fname" placeholder=""
                                autofocus="autofocus"/>
-                    </div>
+                    </div><br />
                     <div class="col col-sm-6 form-group">
                         <label for="lname">Last Name: </label>
                         <input type="text" class="form-control" th:field="*{personLastName}" id="lname" placeholder=""/>
-                        <!--<span th:if="${#fields.hasErrors('degree')}" th:errors="*{degree}"/>-->
-                    </div>
-                </div>
+                        <!--&lt;!&ndash;<span th:if="${#fields.hasErrors('degree')}" th:errors="*{degree}"/>&ndash;&gt;-->
+                    <!--</div>-->
+                </div><br />
                 <div class="row justify-content-center">
                     <div class="col col-sm-12 form-group">
                         <label for="email">Email Address: </label>
-                        <input type="email" class="form-control" th:field="*{personEmail}" id="email" placeholder="email"/>
-                        <!--<span th:if="${#fields.hasErrors('gradYear')}" th:errors="*{gradYear}"/>-->
-                    </div>
+                        <input type="email" class="form-control" th:field="*{personEmail}" id="email" placeholder=""/>
+                        <!--&lt;!&ndash;<span th:if="${#fields.hasErrors('gradYear')}" th:errors="*{gradYear}"/>&ndash;&gt;-->
+                    </div><br />
                 </div>
                 <div class="row justify-content-center">
                     <div class="col col-sm-6 form-group">
-                        <!--<label for="uname">User Name: </label>-->
+                        <!--&lt;!&ndash;<label for="uname">User Name: </label>&ndash;&gt;-->
                         <label>User Name: </label>
                         <input type="text" class="form-control" th:field="*{username}"/>
-                        <!--<span th:if="${#fields.hasErrors('schoolName')}" th:errors="*{schoolName}"/>-->
+                        <!--&lt;!&ndash;<span th:if="${#fields.hasErrors('schoolName')}" th:errors="*{schoolName}"/>&ndash;&gt;-->
 
-                    </div>
+                    </div><br />
                     <div class="col col-sm-6 form-group">
                         <label>Password: </label>
-                        <!--<label for="pass">Password: </label>-->
+                        <!--&lt;!&ndash;<label for="pass">Password: </label>&ndash;&gt;-->
                         <input type="password" class="form-control" th:field="*{password}"/>
-                        <!--<span th:if="${#fields.hasErrors('degree')}" th:errors="*{degree}"/>-->
+                        <!--&lt;!&ndash;<span th:if="${#fields.hasErrors('degree')}" th:errors="*{degree}"/>&ndash;&gt;-->
                     </div>
-                </div>
+                </div><br />
                 <div class="row justify-content-center">
 
                     <div class="col col-sm-6 form-group">
@@ -60,19 +60,17 @@
                             <option value="JOBSEEKER">Job seeker</option>
                             <option value="RECRUITER">Recruiter</option>
                         </select>
-                    </div>
-                </div>
-                <div class="row justify-content-center">
+                    </div><br />
+                <!--</div>-->
+                <!--<div class="row justify-content-center">-->
                     <div class="col col-sm-12">
                         <button type="submit" class="btn btn-primary">Submit</button>
                     </div>
                 </div>
             </form>
+</section>
 
-        </div>
-    </div>
-</div><!-- /.container -->
+<footer th:replace="fragment::footer"/>
 
-<th:block th:replace="base :: W7CJS"></th:block>
 </body>
 </html>

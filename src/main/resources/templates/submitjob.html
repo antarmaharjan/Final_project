@@ -1,23 +1,24 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
-    <!--header css declarations-->
-    <th:block th:replace="base :: W7CHead"/>
-    <title>Resume Generator</title>
+    <meta charset="UTF-8"/>
+    <link rel="stylesheet" href="../css/style.css"/>
+    <meta name="viewport" content="width=device-width"/>
+
+    <title>Resume Building App</title>
 </head>
 <body class="bg">
-<!--Navigation bar-->
-<div th:replace="base :: W7CNav"></div>
+<header th:replace="fragment::headerpart"/>
 
-<div class="container">
+<div class="container" align="center">
     <div class="row justify-content-center">
         <div class="col col-sm-8">
-            <h1>Job posting:</h1>
+            <h2>Here is the job just entered :</h2>
             <table class="table">
                 <thead>
                 <tr>
                     <th>Title</th>
-                    <th>Employer/Company</th>
+                    <th>Employer</th>
                     <th>Salary Range</th>
                     <th>Description</th>
                     <th>Skills</th>
@@ -35,12 +36,14 @@
             </table>
         </div>
     </div>
-    <div class="row justify-content-center">
-        <a class="btn btn-primary" th:href="@{/addjob}" role="button">Post another job</a>
+    <div class="row justify-content-center" align="center">
+        <h2>What would you like to do next?</h2>
+        <a class="btn btn-primary" th:href="@{/addjob}" role="button">Add next job</a>
+        <p><a type="button" class="btn btn-primary" th:href="@{/showjobs}">View all listed jobs</a></p>
+        <a class="btn btn-primary" th:href="@{/home}">Go back to Home</a>
     </div>
 </div>
 
-<th:block th:replace="base :: W7CJS"></th:block>
-
+<footer th:replace="fragment::footerpart"/>
 </body>
 </html>

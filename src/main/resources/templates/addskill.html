@@ -1,48 +1,54 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
+    <meta charset="UTF-8"/>
+    <link rel="stylesheet" href="../css/style.css"/>
+    <meta name="viewport" content="width=device-width"/>
     <!--header css declarations-->
-    <th:block th:replace="base :: W7CHead"/>
-    <title>Resume Generator</title>
+    <!--<th:block th:replace="base :: W7CHead"/>-->
+    <title>Resume Building App</title>
 
 </head>
-<body class="bg">
+<body>
+<!--<body class="bg">-->
+<header th:replace="fragment::headerpart"/>
 <!--Navigation bar-->
-<div th:replace="base :: W7CNav"></div>
+<!--<div th:replace="base :: W7CNav"></div>-->
 
 
 <!--input-->
-<div class="container">
+<section id="showcase">
+<div class="container"align="center">
     <div class="row justify-content-center">
         <div class="col col-sm-10 form-group">
             <form action="#" th:action="@{/addskill}" th:object="${newSkill}" method="post">
                 <input type="hidden" th:field="*{skillId}"/>
                 <div class="row justify-content-center">
                     <div class="col col-sm-12 form-group">
-                        <h1>New skill information for: </h1>
-                        <select name="selectperson">
-                            <option th:each="person:${people}" th:value="${person.personId}"
-                                    th:text="${person.personFirstName}+' '+${person.personLastName}"></option>
-                        </select>
+                        <h3 align="center">Skill information: </h3>
+                        <!--<select name="selectperson">-->
+                            <!--<option th:each="person:${people}" th:value="${person.personId}"-->
+                                    <!--th:text="${person.personFirstName}+' '+${person.personLastName}"></option>-->
+                        <!--</select>-->
                     </div>
-                </div>
+                </div><br />
                 <div class="row justify-content-center">
                     <div class="col col-sm-6 form-group">
                         <label for="skill">Skill</label>
                         <input type="text" class="form-control" th:field="*{skillName}" id="skill"
-                               placeholder="Juggling" autofocus="autofocus"/>
+                               placeholder="skillName" autofocus="autofocus"/>
                         <span th:if="${#fields.hasErrors('skillName')}" th:errors="*{skillName}"/>
 
-                    </div>
+                    </div><br />
                     <div class="col col-sm-6 form-group">
                         <label for="level">Skill level</label>
                         <input type="text" class="form-control" th:field="*{skillLevel}" id="level"
-                               placeholder="Mastery!"/>
+                               placeholder="Skill level"/>
                         <span th:if="${#fields.hasErrors('skillLevel')}" th:errors="*{skillLevel}"/>
                     </div>
-                </div>
+                </div><br />
                 <div class="row justify-content-center">
-                    <div class="col col-sm-12">
+                    <div class="col col-sm-12" align="center">
                         <button type="submit" class="btn btn-primary">Submit</button>
                     </div>
                 </div>
@@ -51,7 +57,18 @@
     </div>
 </div>
 
-<th:block th:replace="base :: W7CJS"></th:block>
+<!--<th:block th:replace="base :: W7CJS"></th:block>-->
+</section>
 
+
+
+
+
+
+
+
+<br />
+
+<footer th:replace="fragment::footerpart"/>
 </body>
 </html>

@@ -1,57 +1,61 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
+    <meta charset="UTF-8"/>
+    <link rel="stylesheet" href="../css/style.css"/>
+    <meta name="viewport" content="width=device-width"/>
     <!--header css declarations-->
-    <th:block th:replace="base :: W7CHead"/>
-    <title>Resume Generator</title>
+    <!--<th:block th:replace="base :: W7CHead"/>-->
+    <title>Resume Building App!</title>
 
 </head>
-<body class="bg">
+<header th:replace="fragment::headerpart"/>
+<body>
 <!--Navigation bar-->
-<div th:replace="base :: W7CNav"></div>
+<!--<div th:replace="base :: W7CNav"></div>-->
 
-<div class="container" >
+<div class="container" align="center" >
     <div class="row justify-content-center">
         <div class="col col-sm-10 form-group">
             <form action="#" th:action="@{/addexp2}" th:object="${newExp}" method="post">
                 <input type="hidden" th:field="*{expId}"/>
                 <input type="hidden" th:field="${currentPerson.personId}"/>
                 <div class="col col-sm-12 form-group">
-                    <h1>Work history for <span th:text="${currentPerson.personFirstName}+' '+${currentPerson.personLastName}"/></h1>
+                    <h3>Work history for <span th:text="${currentPerson.personFirstName}+' '+${currentPerson.personLastName}"/></h3>
                 </div>
                 <div class="row justify-content-center">
                     <div class="col col-sm-6 form-group">
                         <label for="co">Company</label>
-                        <input type="text" class="form-control" th:field="*{expCompany}" id="co" placeholder="Company" autofocus="autofocus"/>
+                        <input type="text" class="form-control" th:field="*{expCompany}" id="co" placeholder="Company name" autofocus="autofocus"/>
                         <!--<span th:if="${#fields.hasErrors('company')}" th:errors="*{company}"/>-->
-                    </div>
+                    </div><br />
                     <div class="col col-sm-6 form-group">
                         <label for="exptitle">Title</label>
                         <input type="text" class="form-control" th:field="*{expTitle}" id="exptitle" placeholder="Job title"/>
                         <!--<span th:if="${#fields.hasErrors('title')}" th:errors="*{title}"/>-->
                     </div>
-                </div>
+                </div><br />
                 <div class="row justify-content-center">
                     <div class="col col-sm-6 form-group">
                         <label for="sdate">Start Date</label>
                         <input type="date" class="form-control" th:field="*{expStartDate}" id="sdate"/>
                         <!--<span th:if="${#fields.hasErrors('startDate')}" th:errors="*{startDate}"/>-->
-                    </div>
+                    </div><br />
                     <div class="col col-sm-6 form-group">
                         <label for="edate">End Date</label>
                         <input type="date" class="form-control" th:field="*{expEndDate}" id="edate"/>
                     </div>
-                </div>
+                </div><br />
                 <div class="row justify-content-center">
                     <div class="col col-sm-6 form-group">
                         <label for="duty1">Job Duty</label>
                         <input type="text" class="form-control" th:field="*{expFirstDuty}" id="duty1" placeholder="First duty"/>
-                    </div>
+                    </div><br />
                     <div class="col col-sm-6 form-group">
                         <label for="duty2">Job Duty</label>
                         <input type="text" class="form-control" th:field="*{expSecondDuty}" id="duty2" placeholder="Second duty"/>
                     </div>
-                </div>
+                </div><br />
                 <div class="row justify-content-center">
                     <div class="col col-sm-12">
                         <button type="submit" class="btn btn-primary">Submit</button>
@@ -61,7 +65,8 @@
         </div>
     </div>
 </div>
+<footer th:replace="fragment::footerpart"/>
 
-<th:block th:replace="base :: W7CJS"></th:block>
+<!--<th:block th:replace="base :: W7CJS"></th:block>-->
 </body>
 </html>

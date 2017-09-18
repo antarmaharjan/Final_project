@@ -1,37 +1,42 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 <head>
-    <!--header css declarations-->
-    <th:block th:replace="base :: W7CHead"/>
-    <title>Resume Generator</title>
+    <meta charset="UTF-8"/>
+    <link rel="stylesheet" href="../css/style.css"/>
+    <meta name="viewport" content="width=device-width"/>
+    <title></title>
+    <style type="text/css">
+        a{
+            color: gold;
+        }
+    </style>
 
 </head>
 <body class="bg">
-
-<!--Navigation bar-->
-<div th:replace="base :: W7CNav"></div>
-
-
+<header th:replace="fragment::headerpart"/>
 <!--input-->
-<div class="container">
+<section id="showcase">
+    <div class="container"></div>
+<!--<div class="container">-->
     <div class="row justify-content-center">
         <div class="col col-sm-6 form-group">
-            <h1>Roboresume</h1>
-            <h3 th:text="'Welcome '+${currentuser.personFirstName} +' '+${currentuser.personLastName}"></h3>
-            <h3> Please click on sign in button with your credentials</h3>
+
+            <h2 th:text="'Welcome '+${currentuser.personFirstName} +' '+${currentuser.personLastName}"></h2>
+
             <div class="row justify-content-center">
                 <div class="col col-sm-12 form-group">
-                    <p>Your username:<span th:text="${currentuser.username}"></span>
+                    <p>Your username:<span  th:text="${currentuser.username}"></span> </p>
                     Your role:<span th:each="role : ${currentuser.secRoles}" th:text="${role.secRoleName}"></span>
-                    Your password:<span th:text="${currentuser.password}"></span>
-                    <a sec:authorize="isAnonymous()" class="nav-item nav-link" th:href="@{/login}">Sign in</a>
+                    <p>Your password:<span th:text="${currentuser.password}"></span></p>
+                    <h3> Please click on sign in button with your credentials</h3>
+                    <a sec:authorize="isAnonymous()"  class="btn btn-success" th:href="@{/login}">Sign in</a>
                 </div>
             </div>
         </div>
     </div>
-</div>
-<th:block th:replace="base :: W7CJS"></th:block>
 
+</section>
 
+<footer th:replace="fragment::footerpart"/>
 </body>
 </html>

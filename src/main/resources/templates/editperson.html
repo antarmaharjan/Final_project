@@ -1,18 +1,18 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="www.thymeleaf.org ">
 <head>
-    <meta charset="utf-8"/>
-    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
-    <meta name="viewport" content="width=device-width, initial-scale=1"/>
-    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <meta charset="UTF-8"/>
+    <link rel="stylesheet" href="../css/style.css"/>
+    <meta name="viewport" content="width=device-width"/>
+
     <title>Signup</title>
 
-    <th:block th:replace="base :: W7CHead"></th:block>
+
 </head>
 <body>
-<th:block th:replace="base :: W7CNav"></th:block>
-
-<div class="container">
+<!--<th:block th:replace="base :: W7CNav"></th:block>-->
+<header th:repalce="fragment::headerpart"/>
+<div class="container" align="center">
     <div class="row justify-content-center">
         <div class="col col-sm-10">
             <h2>Welcome new user!</h2>
@@ -21,19 +21,19 @@
                     <div class="col col-sm-6 form-group">
                         <input type="hidden" th:field="*{personId}"/>
                         <label for="fname">First Name: </label>
-                        <input type="text" class="form-control" th:field="*{personFirstName}" id="fname" placeholder="Jane"
+                        <input type="text" class="form-control" th:field="*{personFirstName}" id="fname" placeholder=""
                                autofocus="autofocus"/>
                     </div>
                     <div class="col col-sm-6 form-group">
                         <label for="lname">Last Name: </label>
-                        <input type="text" class="form-control" th:field="*{personLastName}" id="lname" placeholder="Doe"/>
+                        <input type="text" class="form-control" th:field="*{personLastName}" id="lname" placeholder=""/>
                         <!--<span th:if="${#fields.hasErrors('degree')}" th:errors="*{degree}"/>-->
                     </div>
                 </div>
                 <div class="row justify-content-center">
                     <div class="col col-sm-12 form-group">
                         <label for="email">Email Address: </label>
-                        <input type="email" class="form-control" th:field="*{personEmail}" id="email" placeholder="jane@doe.com"/>
+                        <input type="email" class="form-control" th:field="*{personEmail}" id="email" placeholder="enail"/>
                         <!--<span th:if="${#fields.hasErrors('gradYear')}" th:errors="*{gradYear}"/>-->
                     </div>
                 </div>
@@ -45,18 +45,18 @@
                         <!--<span th:if="${#fields.hasErrors('schoolName')}" th:errors="*{schoolName}"/>-->
 
                     </div>
-                    <div class="col col-sm-6 form-group">
-                        <label>Password: </label>
-                        <!--<label for="pass">Password: </label>-->
-                        <input type="password" class="form-control" th:field="*{password}"/>
-                        <!--<span th:if="${#fields.hasErrors('degree')}" th:errors="*{degree}"/>-->
-                    </div>
+                    <!--<div class="col col-sm-6 form-group">-->
+                        <!--<label>Password: </label>-->
+                        <!--&lt;!&ndash;<label for="pass">Password: </label>&ndash;&gt;-->
+                        <!--<input type="password" class="form-control" th:field="*{password}"/>-->
+                        <!--&lt;!&ndash;<span th:if="${#fields.hasErrors('degree')}" th:errors="*{degree}"/>&ndash;&gt;-->
+                    <!--</div>-->
                 </div>
                 <div class="row justify-content-center">
 
-                    <div class="col col-sm-6 form-group">
-                        Your role:<span th:each="role : ${secRoles}" th:text="${role.secRoleName}"></span>
-                    </div>
+                    <!--<div class="col col-sm-6 form-group">-->
+                        <!--Your role:<span th:each="role : ${secRoles}" th:text="${role.secRoleName}"></span>-->
+                    <!--</div>-->
                 </div>
                 <div class="row justify-content-center">
                     <div class="col col-sm-12">
@@ -68,7 +68,7 @@
         </div>
     </div>
 </div><!-- /.container -->
-
-<th:block th:replace="base :: W7CJS"></th:block>
+<footer th:replace="fragment::footerpart"/>
+<!--<th:block th:replace="base :: W7CJS"></th:block>-->
 </body>
 </html>

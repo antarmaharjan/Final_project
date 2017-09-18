@@ -1,18 +1,26 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
-    <!--header css declarations-->
-    <th:block th:replace="base :: W7CHead"/>
-    <title>Resume Generator</title>
-</head>
-<body class="bg">
-<!--Navigation bar-->
-<div th:replace="base :: W7CNav"></div>
+    <meta charset="UTF-8"/>
+    <link rel="stylesheet" href="../css/style.css"/>
+    <meta name="viewport" content="width=device-width"/>
+    <style type="text/css">
+        a{
+            color: gold;
+        }
+    </style>
 
-<div class="container">
+    <title>Resume Building App!</title>
+</head>
+<body>
+
+<header th:replace="fragment::headerpart"/>
+<section id="showcase">
+<div class="container" align="center">
     <div class="row justify-content-center">
         <div class="col col-sm-8">
-            <h1>You've added  work experience for <span th:text="${currentPerson.personFirstName}+' '+${currentPerson.personLastName}"/></h1>
+            <h3 align="center">Your Work History:</h3>
+            <!--<h1>Your work experience: <span th:text="${currentPerson.personFirstName}+' '+${currentPerson.personLastName}"/></h1>-->
 
             <table class="table">
                 <thead>
@@ -38,20 +46,19 @@
             </table>
         </div>
     </div>
-    <h3>Click on one of the button below to continue</h3>
+    <h4 align="center">What would you like to do next?</h4>
     <div class="row justify-content-center">
         <a class="btn btn-primary" th:href="@{/addexp/{id}(id=${currentPerson.personId})}" role="button">Add another experience</a>
 
-            <a class="btn btn-primary" th:href="@{/addeducation/{id}(id=${currentPerson.personId})}" role="button">Add more school information</a>
+            <a class="btn btn-success" th:href="@{/addeducation/{id}(id=${currentPerson.personId})}" role="button">Add more school information</a>
             <a class="btn btn-primary" th:href="@{/addskill/{id}(id=${currentPerson.personId})}" role="button">Add more skill</a>
+        <a class="btn btn-success" th:href="@{/home}">Go back to Home</a>
             <!--<a class="btn btn-primary" th:href="@{/addexp/{id}(id=${currentPerson.personId})}" role="button">Add an experience</a>-->
-
-
 
     </div>
 </div>
+</section>
 
-<th:block th:replace="base :: W7CJS"></th:block>
-
+<footer th:replace="fragment::footerpart"/>
 </body>
 </html>

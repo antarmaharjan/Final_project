@@ -1,21 +1,22 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
-    <!--header css declarations-->
-    <th:block th:replace="base :: W7CHead"/>
-    <title>Resume Generator</title>
+    <meta charset="UTF-8"/>
+    <link rel="stylesheet" href="../css/style.css"/>
+    <meta name="viewport" content="width=device-width"/>
+
+    <title>Resume Building App</title>
 
 </head>
 <body class="bg">
-<!--Navigation bar-->
-<div th:replace="base :: W7CNav"></div>
-
+<header th:replace="fragment::headerpart"/>
 
 <!--input-->
+<section id="showcase">
 <div class="container">
     <div class="row justify-content-center">
         <div class="col col-sm-10 form-group">
-            <h1>Education information for <span th:text="${currentPerson.personFirstName}+' '+${currentPerson.personLastName}"/></h1>
+            <h3>Educational history for <span th:text="${currentPerson.personFirstName}+' '+${currentPerson.personLastName}"/></h3>
             <form action="#" th:action="@{/addeducation2}" th:object="${newEducation}" method="post">
                 <div class="row justify-content-center">
                     <div class="col col-sm-6 form-group">
@@ -24,16 +25,16 @@
 
                         <label for="school">School</label>
                         <input   type="text" class="form-control" th:field="*{educationSchoolName}" id="school"
-                               placeholder="College" autofocus="autofocus"/>
+                               placeholder="school" autofocus="autofocus"/>
                         <!--<span th:if="${#fields.hasErrors('schoolName')}" th:errors="*{schoolName}"/>-->
 
-                    </div>
+                    </div><br />
                     <div class="col col-sm-6 form-group">
                         <label for="degree">Degree</label>
                         <input  type="text" class="form-control" th:field="*{educationDegree}" id="degree"
                                placeholder="Degree"/>
                         <!--<span th:if="${#fields.hasErrors('degree')}" th:errors="*{degree}"/>-->
-                    </div>
+                    </div><br />
                 </div>
                 <div class="row justify-content-center">
                     <div class="col col-sm-12 form-group">
@@ -42,7 +43,7 @@
                                placeholder="year"/>
                         <!--<span th:if="${#fields.hasErrors('gradYear')}" th:errors="*{gradYear}"/>-->
                     </div>
-                </div>
+                </div><br />
                 <div class="row justify-content-center">
                     <div class="col col-sm-12">
                         <button type="submit" class="btn btn-primary">Submit</button>
@@ -54,8 +55,9 @@
         </div>
     </div>
 </div>
+</section>
 
-<th:block th:replace="base :: W7CJS"></th:block>
+<footer th:replace="fragment::footerpart"/>
 
 </body>
 </html>

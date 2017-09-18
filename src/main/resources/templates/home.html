@@ -1,25 +1,41 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 <head>
-    <th:block th:replace="base :: W7CHead"></th:block>
+    <meta charset="UTF-8"/>
+    <link rel="stylesheet" href="../css/style.css"/>
+    <meta name="viewport" content="width=device-width"/>
+    <style type="text/css">
+        a{
+            color: gold;
+        }
+    </style>
+
+    <!--<head th:fragment="headingpart">-->
+
+    <!--<th:block th:replace="base :: W7CHead"></th:block>-->
     <title>Welcome!</title>
 </head>
 <body class="bg">
-<th:block th:replace="base :: W7CNav"></th:block>
+<header th:replace="fragment::headerpart"/>
+
+<!--<th:block th:replace="base :: W7CNav"></th:block>-->
+<section id="showcase">
+    <!--<div class="container"></div>-->
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-6 text-center">
-            <h1>Welcome to the RoboResume app!</h1>
-            <p>What would you like to do now?</p>
+            <h2>Welcome to the Resume Building app!</h2>
+            <!--<p>What would you like to do now?</p>-->
         </div>
     </div>
     <div sec:authorize="hasAuthority('ADMIN')" class="row justify-content-center">
         <div class="col-6 text-center">
-            <p><a type="button" class="btn btn-outline-primary" th:href="@{/addseeker}">Auto-add a job seeker</a></p>
+            <h3>What would you like to do?</h3>
+            <p><a type="button" class="btn btn-outline-info" th:href="@{/addseeker}">Auto-add a job seeker</a></p>
             <p><a type="button" class="btn btn-outline-primary" th:href="@{/addrecruiter}">Auto-add a recruiter</a></p>
-            <p><a type="button" class="btn btn-outline-primary" th:href="@{/addeducation}">Add education for someone</a>
+            <p><a type="button" class="btn btn-outline-success" th:href="@{/addeducation}">Add education for someone</a>
             </p>
-            <p><a type="button" class="btn btn-outline-primary" th:href="@{/addexp}">Add work experience for someone</a>
+            <p><a type="button" class="btn btn-outline-info" th:href="@{/addexp}">Add work experience for someone</a>
             </p>
             <p><a type="button" class="btn btn-outline-primary" th:href="@{/addskill}">Add a skill for someone</a></p>
         </div>
@@ -31,38 +47,46 @@
     </div>
     <div sec:authorize="hasAuthority('JOBSEEKER')" class="row justify-content-center">
         <div class="col-6 text-center">
-            <p><a type="button" class="btn btn-outline-primary" th:href="@{/aboutme}">See my information</a></p>
-
+            <h3>What would you like to do?</h3>
             <div th:if="${currentuser}!=null">
-            <p><a type="button" class="btn btn-outline-primary"
+            <p><a type="button" class="btn btn-info"
                   th:href="@{/addeducation/{personid}(personid=${currentuser.personId})}">Add education</a></p>
-            <p><a type="button" class="btn btn-outline-primary"
+            <p><a type="button" class="btn btn-info"
                   th:href="@{/addexp/{personid}(personid=${currentuser.personId})}">Add work experience</a></p>
-            <p><a type="button" class="btn btn-outline-primary"
+            <p><a type="button" class="btn btn-info"
                   th:href="@{/addskill/{personid}(personid=${currentuser.personId})}">Add a skill</a></p>
-            <p><a type="button" class="btn btn-outline-primary"
+            <p><a type="button" class="btn btn-warning"
                   th:href="@{/generateresume/{personid}(personid=${currentuser.personId})}">Generate my resume</a></p>
                 </div>
         </div>
     </div>
     <div sec:authorize="isAuthenticated()" class="row justify-content-center">
         <div class="col-6 text-center">
-            <p><a type="button" class="btn btn-outline-primary" th:href="@{/generate}">View resumes</a></p>
-            <p><a type="button" class="btn btn-outline-primary" th:href="@{/listperson}">List all people</a></p>
-            <p><a type="button" class="btn btn-outline-primary" th:href="@{/showjobs}">List all jobs</a></p>
-            <p><a type="button" class="btn btn-outline-primary" th:href="@{/search}">Search</a></p>
-            <p><a type="button" class="btn btn-outline-primary" th:href="@{/logout}">Logout</a></p>
+            <p><a type="button" class="btn btn-primary" th:href="@{/generate}">View resumes</a></p>
+            <p><a type="button" class="btn btn-primary" th:href="@{/listperson}">List all people</a></p>
+            <p><a type="button" class="btn btn-primary" th:href="@{/showjobs}">List all jobs</a></p>
+            <p><a type="button" class="btn btn-primary" th:href="@{/search}">Search</a></p>
+            <p><a type="button" class="btn btn-danger" th:href="@{/logout}">Logout</a></p>
         </div>
     </div>
     <div sec:authorize="isAnonymous()" class="row justify-content-center">
         <div class="col-6 text-center">
-            <p><a type="button" class="btn btn-outline-primary" th:href="@{/login}">Login</a></p>
-            <p> If first time log in, Click on sign up button.</p>
-            <p><a type="button" class="btn btn-outline-primary" th:href="@{/signup}">Sign up</a></p>
+            <p><a type="button" class="btn btn-primary" th:href="@{/login}">Login</a></p>
+            <p> If New User, Click on sign up button.</p>
+            <p><a type="button" class="btn btn-primary" th:href="@{/signup}">Sign up</a></p>
         </div>
     </div>
 </div>
+</section>
 
-    <th:block th:replace="base :: W7CJS"></th:block>
+
+
+
+<br/>
+
+
+<footer th:replace="fragment::footerpart"/>
+
+<!--<th:block th:replace="base :: W7CJS"></th:block>-->
 </body>
 </html>

@@ -1,18 +1,25 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
-    <!--header css declarations-->
-    <th:block th:replace="base :: W7CHead"/>
-    <title>Resume Generator</title>
+    <meta charset="UTF-8"/>
+    <link rel="stylesheet" href="../css/style.css"/>
+    <meta name="viewport" content="width=device-width"/>
+    <style type="text/css">
+        a{
+            color: gold;
+        }
+    </style>
+
+    <title>Resume Building App</title>
 </head>
 <body class="bg">
-<!--Navigation bar-->
-<div th:replace="base :: W7CNav"></div>
+<header th:replace="fragment::headerpart"/>
 
+<section id="showcase">
 <div class="container">
     <div class="row justify-content-center">
-        <div class="col col-sm-8">
-            <h1>You've added a new education item for <span th:text="${currentPerson.personFirstName}+' '+${currentPerson.personLastName}"/></h1>
+        <div class="col col-sm-8" align="center">
+            <h2>Your educational history :</h2>
             <table class="table">
                 <thead>
                 <tr>
@@ -31,17 +38,18 @@
             </table>
         </div>
     </div>
-    <h3>Click on one of the button below to continue</h3>
-    <div class="row justify-content-center">
-        <a class="btn btn-primary" th:href="@{/addeducation/{id}(id=${currentPerson.personId})}" role="button">Add another school</a>
-        <a class="btn btn-primary" th:href="@{/addskill/{id}(id=${currentPerson.personId})}" role="button">Add another skill</a>
-        <a class="btn btn-primary" th:href="@{/addexp/{id}(id=${currentPerson.personId})}" role="button">Add an experience</a>
-            <!--<a class="btn btn-primary" th:href="@{/addeducation/{id}(id=${currentPerson.personId})}" role="button">Add a school</a>-->
+        <h3 align="center">What would you like to do next?</h3>
+        <br />
+        <div class="row justify-content-center">
+        <a th:href="@{/addeducation/{id}(id=${currentPerson.personId})}" role="button">Add another school</a>
+        <a th:href="@{/addskill/{id}(id=${currentPerson.personId})}" role="button">Add  skill</a>
+        <a th:href="@{/addexp/{id}(id=${currentPerson.personId})}" role="button">Add work experience</a>
+        <a th:href="@{/home}">Go back to Home</a>
 
-    </div>
-</div>
+        </div>
+        </div>
 
-<th:block th:replace="base :: W7CJS"></th:block>
-
+</section>
+<footer th:replace="fragment::footerpart"/>
 </body>
 </html>

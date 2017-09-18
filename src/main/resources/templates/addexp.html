@@ -1,15 +1,19 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
+    <meta charset="UTF-8"/>
+    <link rel="stylesheet" href="../css/style.css"/>
+    <meta name="viewport" content="width=device-width"/>
     <!--header css declarations-->
-    <th:block th:replace="base :: W7CHead"/>
-    <title>Resume Generator</title>
+    <!--<th:block th:replace="base :: W7CHead"/>-->
+    <title>Resume Building App</title>
 
 </head>
+<header th:replace="fragment::headerpart"/>
 <body class="bg">
 <!--Navigation bar-->
-<div th:replace="base :: W7CNav"></div>
-
+<!--<div th:replace="base :: W7CNav"></div>-->
+<section id="showcase">
 <div class="container">
     <div class="row justify-content-center">
         <div class="col col-sm-10 form-group">
@@ -17,7 +21,7 @@
                 <input type="hidden" th:field="*{expId}"/>
                 <div class="row justify-content-center">
                     <div class="col col-sm-12 form-group">
-                        <h1>Work History for: </h1>
+                        <h3> Work History for : </h3>
                         <select name="selectperson">
                             <option th:each="person:${people}" th:value="${person.personId}"
                                     th:text="${person.personFirstName}+' '+${person.personLastName}"></option>
@@ -29,13 +33,13 @@
                         <label for="co">Company</label>
                         <input type="text" class="form-control" th:field="*{expCompany}" id="co" placeholder=""
                                autofocus="autofocus"/>
-                        <!--<span th:if="${#fields.hasErrors('company')}" th:errors="*{company}"/>-->
+                        <span th:if="${#fields.hasErrors('company')}" th:errors="*{company}"/>
                     </div>
                     <div class="col col-sm-6 form-group">
                         <label for="exptitle">Title</label>
                         <input   type="text" class="form-control" th:field="*{expTitle}" id="exptitle"
                                placeholder=" "/>
-                        <!--<span th:if="${#fields.hasErrors('title')}" th:errors="*{title}"/>-->
+                        <span th:if="${#fields.hasErrors('title')}" th:errors="*{title}"/>
                     </div>
                 </div>
                 <div class="row justify-content-center">
@@ -70,7 +74,8 @@
         </div>
     </div>
 </div>
-
-<th:block th:replace="base :: W7CJS"></th:block>
+</section>
+<!--<th:block th:replace="base :: W7CJS"></th:block>-->
+<footer th:replace="fragment"/>
 </body>
 </html>

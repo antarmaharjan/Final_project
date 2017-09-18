@@ -1,25 +1,32 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
+    <meta charset="UTF-8"/>
+    <link rel="stylesheet" href="../css/style.css"/>
+    <meta name="viewport" content="width=device-width"/>
+    <style type="text/css">
+        a{
+            color: gold;
+        }
+    </style>
     <!--header css declarations-->
-    <th:block th:replace="base :: W7CHead"/>
-    <title>Resume Generator</title>
+    <!--<th:block th:replace="base :: W7CHead"/>-->
+    <title>Resume Building App</title>
 
 </head>
 <body class="bg">
+<header th:replace="fragment::headerpart"/>
 
 <!--Navigation bar-->
-<div th:replace="base :: W7CNav"></div>
-
-
-<!--input-->
+<!--<div th:replace="base :: W7CNav"></div>-->
+<section id="showcase"> <!--input-->
 <div class="container">
     <div class="row justify-content-center">
         <div class="col col-sm-6 form-group">
-            <h1>Roboresume</h1>
-            <h3>Click on the person below to view details</h3>
+
+            <h2>Click on the person below to view details</h2>
             <div class="row justify-content-center">
-                <div class="col col-sm-12 form-group">
+                <div class="col col-sm-12 form-group" th:bgcolor="gold">
                     <ul th:each="person:${allPeople}">
                        <li><a th:href="@{generateresume/{id}(id=${person.personId})}" th:text="${person.personFirstName}+' '+${person.personLastName}"></a></li>
                     </ul>
@@ -28,8 +35,9 @@
         </div>
     </div>
 </div>
-<th:block th:replace="base :: W7CJS"></th:block>
-
+<!--<th:block th:replace="base :: W7CJS"></th:block>-->
+</section>
+<footer th:replace="fragment::footerpart"/>
 
 </body>
 </html>
